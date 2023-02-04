@@ -27,101 +27,95 @@ nav h1 {
   color: white;
   font-size: 45px;
 }
-.game {
-  width: 100vw;
-  height: calc(100vh - 170px);
-  display: flex;
-  align-items: center;
-  padding-top: 50px;
-  flex-direction: column;
-}
-
-.board {
-  width: 450px;
-  height: 550px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
-}
-
-.letter {
-  flex: 33%;
-  height: 100%;
-  border: 1px solid grey;
-  margin: 5px;
-  display: grid;
-  place-items: center;
-  font-size: 30px;
-  font-weight: bolder;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#correct {
-  background-color: #528d4e;
-}
-
-#almost {
-  background-color: #b49f39;
-}
-
-#error {
-  background-color: #3a393c;
-}
-
-.keyboard {
-  width: 700px;
-  height: 300px;
-  margin-top: 60px;
-}
-
-.line1 {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
+.row{
+  text-align: center;
   display: flex;
   justify-content: center;
-  margin: 5px;
 }
-.line2 {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 5px;
-}
-.line3 {
-  flex: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 5px;
+.row > div{
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5em;
 }
 
-.key {
-  width: 50px;
-  height: 70px;
-  margin: 5px;
-  border-radius: 4px;
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  background-color: grey;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
+.row > div.green {
+  --background: #5AC85A;
+  --border-color: #5AC85A;
+  animation: flip 0.5s ease forwards;
 }
 
-#big {
-  width: 100px;
+.row > div.grey {
+  --background: #A1A1A1;
+  --border-color: #A1A1A1;
+  animation: flip 0.5s ease forwards;
 }
-#disabled {
-  background-color: #3a393c;
+
+.row > div.yellow {
+  --background: #E2CC68;
+  --border-color: #E2CC68;
+  animation: flip 0.5s ease forwards;
+}
+
+.row > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.row > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.row > div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.row > div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.row.current > div.filled {
+  animation: bounce 0.2s ease-in-out forwards;
+}
+
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+    background: #fff;
+    border-color: #333;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background: #fff;
+    border-color: #333;
+  }
+  55% {
+    transform: rotateX(90deg);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #eee;
+  }
+  100% {
+    transform: rotateX(0);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #eee;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    border-color: #ddd;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    border-color: #333;
+  }
 }
